@@ -1,0 +1,22 @@
+---
+- name: alexfoley.info website wrapper
+  hosts: localhost
+  gather_facts: true
+
+  pre_tasks:
+    - name: set facts
+      set_fact:
+        mkdocs_build_dir: "{{ playbook_dir }}/../build"
+        mkdocs_root_dir: "{{ playbook_dir }}/../"
+        s3_bucket: "engineeringwithalex.io"
+    
+  tasks:
+    - name: Build mkdocs and upload
+      include_role: 
+        name: ../../modules/ansible/roles/build-mkdocs
+      vars:
+        role_mkdocs_build_dir: "{{ mkdocs_build_dir }}"
+        role_mkdocs_root_dir: "{{ mkdocs_root_dir }}"
+        role_s3_bucket: "{{ s3_bucket }}"
+
+    

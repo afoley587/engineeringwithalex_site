@@ -1,0 +1,50 @@
+div.polaroid {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+}
+
+img {width: 100%}
+
+div.img-container {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.div.polaroid img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.div.polaroid img.top:hover {
+  opacity:0;
+}
+
+.gif-fade {
+  position: relative;
+  margin:0 auto 20px auto;
+  height: 550px;
+}
+
+.gif-fade img {
+  position: absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.gif-fade img.top:hover {
+  opacity:0;
+}
+
+h1 {
+  text-align: center;
+}
