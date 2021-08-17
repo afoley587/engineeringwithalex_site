@@ -23,17 +23,16 @@ theme:
             separator: '[\s\-\.]+'
           lang:
             - en
-# extra_css:
-#     - "assets/css/custom.css"
+extra_css:
+    - "assets/css/custom.css"
 extra:
     social:
         - icon: "fontawesome/brands/github"
           link: "https://github.com/af587"
 
-# nav:
-#     - "Home": "index.md"
-#     - "About Me":
-#         - "Experience": "about/experience/index.md"
-#         - "Hobbies": "about/hobbies/index.md"
-#     - "Portfolio": "https://dash.engineeringwithalex.io"
-#     - "Blog": "https://blog.engineeringwithalex.io"
+nav:
+    - "Home": "index.md"
+    - "Projects":
+        - "Take On Me": "projects/take-on-me/index.md"
+    - "Site": "https://engineeringwithalex.io"
+    - "Portfolio": "https://dash.engineeringwithalex.io"
