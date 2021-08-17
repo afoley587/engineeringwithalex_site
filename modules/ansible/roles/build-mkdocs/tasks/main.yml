@@ -1,0 +1,14 @@
+---
+- name: Create build
+  shell: poetry run mkdocs build --site-dir={{ role_mkdocs_build_dir }} 
+  args: 
+    chdir: "{{ role_mkdocs_root_dir }}"
+    
+- name: sync built docs to s3 bucket
+  s3_sync:
+    bucket: "{{ role_s3_bucket }}"
+    permission: "public-read"
+    file_change_strategy: "force"
+    include: "*"
+    delete: true
+    file_root: "{{ role_mkdocs_build_dir }}"

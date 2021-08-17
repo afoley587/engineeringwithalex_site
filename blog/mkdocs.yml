@@ -1,0 +1,39 @@
+---
+site_name: "Alex Foley"
+site_description: "Alex Foley Info."
+site_author: "alex foley"
+site_url: "https://alexfoley.info"
+
+copyright: "&copy; 2021 Alex Foley"
+
+repo_name: ""
+repo_url: ""
+
+docs_dir: "static"
+
+theme: 
+    name: bootstrap4
+
+
+    markdown_extensions:
+        - pymdownx.emoji
+
+    plugins:
+        - search:
+            separator: '[\s\-\.]+'
+          lang:
+            - en
+# extra_css:
+#     - "assets/css/custom.css"
+extra:
+    social:
+        - icon: "fontawesome/brands/github"
+          link: "https://github.com/af587"
+
+# nav:
+#     - "Home": "index.md"
+#     - "About Me":
+#         - "Experience": "about/experience/index.md"
+#         - "Hobbies": "about/hobbies/index.md"
+#     - "Portfolio": "https://dash.engineeringwithalex.io"
+#     - "Blog": "https://blog.engineeringwithalex.io"

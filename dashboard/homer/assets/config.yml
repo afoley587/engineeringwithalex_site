@@ -1,0 +1,41 @@
+---
+# yamllint disable rule:line-length
+
+title: "Alex Foley"
+subtitle: "Portfolio"
+# logo: "assets/logo.png"
+
+header: false
+footer: "&copy; 2021 Alex Foley"
+
+theme: default
+# stylesheet:
+#   - assets/css/custom.css
+colors:
+  light:
+    highlight-primary: "#181a1b"
+    highlight-secondary: "#181a1b"
+    highlight-hover: "#3a9073"
+    link-hover: "#3a9073"
+  dark:
+    highlight-primary: "#181a1b"
+    highlight-secondary: "#181a1b"
+    highlight-hover: "#3a9073"
+    link-hover: "#3a9073"
+
+links:
+  - name: "GitHub"
+    icon: "fab fa-github"
+    url: "https://github.com/af587"
+    target: "_blank"
+
+services:
+  - name: "Python"
+    icon: "fas fa-lock"
+    items:
+      - name: "Django"
+        # logo: "assets/tools/cloudflare.png"
+        subtitle: "Web, Microservice"
+        tag: "web"
+        url: "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Home_page"
+        target: "_blank"

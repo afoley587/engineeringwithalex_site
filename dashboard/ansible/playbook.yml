@@ -1,0 +1,55 @@
+#!/usr/bin/env ansible-playbook
+# yamllint disable rule:line-length
+---
+- name: Builds devops.sporttrade.tools dashboard
+  hosts: localhost
+  gather_facts: true
+
+  vars:
+    homer_ver: "{{ lookup('env', 'HOMER_VERSION' ) | default('v20.09.1', true) }}"
+    assets_dir: "{{ playbook_dir }}/../homer/assets"
+
+  tasks:
+    - name: create working dir
+      tempfile:
+        state: directory
+        suffix: build
+      register: builddir
+
+    - name: download and extract homer
+      unarchive:
+        src: "https://github.com/bastienwirtz/homer/releases/download/{{ homer_ver }}/homer.zip"
+        dest: "{{ builddir.path }}"
+        remote_src: true
+
+    - name: remove assets dir
+      file:
+        path: "{{ builddir.path }}/assets"
+        state: absent
+
+    - name: remove default logo
+      file:
+        path: "{{ builddir.path }}/logo.png"
+        state: absent
+
+    - name: create new assets dir
+      file:
+        path: "{{ builddir.path }}/assets"
+        state: directory
+
+    - name: copy homer assets
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - src: "{{ assets_dir }}/config.yml"
+          dest: "{{ builddir.path }}/assets/config.yml"
+
+    - name: sync build dir to remote bucket
+      s3_sync:
+        bucket: "dash.engineeringwithalex.io"
+        permission: "public-read"
+        file_change_strategy: "force"
+        include: "*"
+        delete: true
+        file_root: "{{ builddir.path }}"
