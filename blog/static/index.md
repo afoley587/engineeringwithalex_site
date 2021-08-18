@@ -5,10 +5,11 @@
 <div class="grid-container">
   <div class="grid-blog-description">
     <h4>Take On Me With Python</h4>
-    <a href="projects/take-on-me/">
+    <a href="projects/take-on-me/index.html">
       <p>
-        Join me with a run recretion of the "Take On Me" 
-        music video!
+        Join me with a fun recretion of the "Take On Me" 
+        music video! A quick introduction to color masking,
+        video streaming, and frame processing using OpenCV.
       </p>    
     </a>
   </div>

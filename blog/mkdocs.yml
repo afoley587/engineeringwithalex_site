@@ -15,20 +15,27 @@ theme:
     name: bootstrap4
 
 
-    markdown_extensions:
-        - pymdownx.emoji
+markdown_extensions:
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+        options: 
+            attributes:
+                height: 1px
+                width: 1px
+    - attr_list
 
-    plugins:
-        - search:
-            separator: '[\s\-\.]+'
-          lang:
+plugins:
+    - search:
+        separator: '[\s\-\.]+'
+        lang:
             - en
 extra_css:
     - "assets/css/custom.css"
 extra:
     social:
         - icon: "fontawesome/brands/github"
-          link: "https://github.com/af587"
+          link: "https://github.com/afoley587"
 
 nav:
     - "Home": "index.md"

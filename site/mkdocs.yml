@@ -15,20 +15,20 @@ theme:
     name: windmill-dark
 
 
-    markdown_extensions:
-        - pymdownx.emoji
+markdown_extensions:
+    - pymdownx.emoji
 
-    plugins:
-        - search:
-            separator: '[\s\-\.]+'
-          lang:
-            - en
+plugins:
+    - search:
+        separator: '[\s\-\.]+'
+      lang:
+        - en
 extra_css:
     - "assets/css/custom.css"
 extra:
     social:
         - icon: "fontawesome/brands/github"
-          link: "https://github.com/af587"
+          link: "https://github.com/afoley587"
 
 nav:
     - "Home": "index.md"

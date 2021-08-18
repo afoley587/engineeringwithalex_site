@@ -537,3 +537,4 @@ lambda_env_*
 # Brewfile lock file - not needed to be checked in
 Brewfile.lock.json
 secret.sh
+*.avi
