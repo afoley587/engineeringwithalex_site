@@ -48,3 +48,93 @@ div.img-container {
 h1 {
   text-align: center;
 }
+
+.twemoji {
+  display: inline-flex;
+  height: 10%;
+  width: 10%;
+  fill: currentColor;
+}
+
+#as-a-human p{
+  float: left;
+  width: 30%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.grid-text-left {
+  grid-column: 1 / 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.grid-text-left p{
+  text-align: left;
+  font-size: 50%;
+}
+
+.grid-text-left ul{
+  text-align: left;
+  font-size: 50%;
+}
+
+.grid-text-left p{
+  text-align: left;
+  font-size: 50%;
+}
+
+.grid-text-right {
+  grid-column: 2 / 3;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.grid-text-right p{
+  text-align: left;
+  font-size: 50%;
+}
+
+.grid-text-right ul{
+  text-align: left;
+  font-size: 50%;
+}
+
+.grid-img-left {
+  float: left;
+  padding-right: 10px;
+  margin-right: 10px;
+
+}
+
+.grid-img-left img{
+  width: 100%;
+  height: 80%;
+}
+
+.grid-img-right {
+  float: right;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.grid-img-right img{
+  width: 100%;
+  height: 80%;
+}
