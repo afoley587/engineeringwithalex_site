@@ -16,13 +16,21 @@ theme:
 
 
 markdown_extensions:
-    - pymdownx.emoji
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+        options: 
+            attributes:
+                height: 1px
+                width: 1px
+    - attr_list
+
 
 plugins:
     - search:
         separator: '[\s\-\.]+'
-      lang:
-        - en
+        lang:
+            - en
 extra_css:
     - "assets/css/custom.css"
 extra:

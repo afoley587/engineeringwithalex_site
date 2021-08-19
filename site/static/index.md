@@ -19,16 +19,16 @@ And I should also add this disclaimer:
 I want to teach my teammates my elegant solutions... and I want to learn theirs as well
 ```
 
+For a more in-depth breakdown of my skillset and experience, hop on over to [my experience page]()
 # As A Human
-I like to hike.  
-I am not very good at surfing.  
-I live to code.  
-I quite frequently read.  
-I practice Muay Thai.  
+
+:man_running: I like to hike  
+:man_surfing: I am not very good at surfing   
+:computer: I live to code   
+:book: I quite frequently read   
+:punch: I practice Muay Thai 
 
 # About this site 
-You're probably thinking "HM.... this is simple... what's the catch?"  
-Can I tell you?  
 There is no hosting solution behind this website.  
 This website is my profile, portfolio, and blog. But it also intended to be a resource for budding engineers who need some help getting started.  
 So let's go through the workflow:
