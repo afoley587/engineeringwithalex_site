@@ -2,7 +2,8 @@ from ibm_watson.websocket import RecognizeCallback
 
 class IBMRecognitionCallback(RecognizeCallback):
   def __init__(self):
-    RecognizeCallback.__init__(self)
+    super().__init__()
+    # RecognizeCallback.__init__(self)
   
   def on_transcription(self, transcript):
     print(transcript)
