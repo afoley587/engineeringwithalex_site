@@ -45,6 +45,3 @@ class NewsApiImpl(NewsApiClient):
         )
 
         return word_list[random_index]
-if __name__ == "__main__":
-    __API_KEY__ = "b4cb1fd3359443bfa193af831e429d88"
-    NewsApiImpl(__API_KEY__).get_random_article()

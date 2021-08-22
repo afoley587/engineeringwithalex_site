@@ -1,3 +1,5 @@
+from ibm_watson.websocket import RecognizeCallback
+
 class IBMRecognitionCallback(RecognizeCallback):
   def __init__(self):
     RecognizeCallback.__init__(self)

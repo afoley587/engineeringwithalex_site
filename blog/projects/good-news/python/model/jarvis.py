@@ -2,9 +2,10 @@ import speech_recognition as sr
 import pyttsx3
 from model.newsApi import NewsApiImpl
 
-# from Queue import Queue, Full
+from queue import Queue, Full
+
 # from ibm_watson import SpeechToTextV1
-# from ibm_watson.websocket import RecognizeCallback, AudioSource
+# from ibm_watson.websocket import AudioSource
 # from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 # from model.ibm_recognizers import IBMRecognitionCallback
 
