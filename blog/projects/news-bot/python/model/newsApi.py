@@ -25,6 +25,7 @@ class NewsApiImpl(NewsApiClient):
         return self.get_news(query_param)
 
     def get_news(self, query_param):
+        print(query_param)
         top_headlines = self.get_everything(
             q=query_param,
             language='en',
