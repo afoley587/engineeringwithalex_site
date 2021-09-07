@@ -57,6 +57,8 @@ random-word = "1.0.4"
 # ibm_cloud_sdk_core = ""
 ibm-watson = "5.2.2"
 docopt = "0.6.2"
+face_recognition = "1.3.0"
+cmake = "3.21.2"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.6.2"

@@ -19,7 +19,6 @@ from docopt import docopt
 from model.jarvis import Jarvis
 
 def handle_fetch(arguments):
-  print(arguments)
   news_query   = arguments['--news-query']
   sr_type      = arguments['--type']
   news_api_key = arguments['--news-apikey']
@@ -35,12 +34,14 @@ def handle_fetch(arguments):
     ibm_api_url  = ibm_api_url,
     recognizer_type = sr_type
   )
-  if (sr_type == 'sr_google') or (sr_type == 'sr_watson'):
-    jarvis.act()
-  elif (sr_type == 'ws_watson'):
-    jarvis.act_ibm_websockets()
-  else:
-    print("UNRECOGNIZED")
+
+  jarvis.act()
+  # if (sr_type == 'sr_google') or (sr_type == 'sr_watson'):
+  #   jarvis.act()
+  # elif (sr_type == 'ws_watson'):
+  #   jarvis.act_ibm_websockets()
+  # else:
+  #   print("UNRECOGNIZED")
   
 def main():
     arguments = docopt(__doc__, version='NewsBot 0.1.0')

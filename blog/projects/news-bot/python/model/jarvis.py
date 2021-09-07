@@ -10,7 +10,6 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from model.ibm_recognizers import IBMRecognitionCallback
 import pyaudio
 from threading import Thread
-import sys
 
 class Jarvis:
     def __init__(
@@ -28,6 +27,9 @@ class Jarvis:
         self.speech_engine = self.__init_engine(
             voice="com.apple.speech.synthesis.voice.daniel"
         )
+
+        self.bytes_heard     = []
+        self.files_responded = []
     
     def __init_engine(
             self, 
@@ -60,11 +62,13 @@ class Jarvis:
           audio=audio_source,
           content_type='audio/l16; rate=16000',
           recognize_callback=callback,
-          interim_results=True
+          interim_results=True,
+          background_audio_suppression=0.6,
+          inactivity_timeout=2
         )
 
     def __text_to_speech(self, translated):
-      self.speech_engine.say(f"I think you said {translated}")
+      self.speech_engine.say(translated)
       self.speech_engine.runAndWait()
 
     def fetch_news(self, kind="good"):
@@ -73,19 +77,31 @@ class Jarvis:
         return self.news_fetcher.get_random_article()
 
     def act(self):
-        translated = None
         with sr.Microphone() as source:
             print("Adjusting for ambient noise... one second please!")
             self.recognizer.adjust_for_ambient_noise(source)
-            print("I am waiting for your next order")
-            audio = self.recognizer.listen(source)
-            translated = self.__recognize_audio(audio)
-        if (translated):
-            print("Translated")
-            self.__text_to_speech(f"I think you said {translated}")
-            if ("news" in translated):
-                article = self.fetch_news()
-                self.__text_to_speech(article)
+            while(True):
+                translated = None
+                print("I am waiting for your next order")
+                audio = self.recognizer.listen(source)
+                translated = self.__recognize_audio(audio)
+                if (translated): 
+                    print(f"Translated {translated}")
+                    if ("goodbye" in translated): 
+                      self.__text_to_speech("goodbye")
+                      return
+                    else:
+                      self.__text_to_speech("oh hello")
+                      new_command = self.act_ibm_websockets()
+                      if ("knock") in new_command:
+                        self.__text_to_speech("oh gosh whos there")
+                        is_there = self.act_ibm_websockets()
+                        self.__text_to_speech(f"{is_there} who")
+                        final_act = self.act_ibm_websockets()
+                        self.__text_to_speech("please stop")
+                    # if ("news" in translated):
+                    #     article = self.fetch_news()
+                    #     self.__text_to_speech(article)
     
     def pyaudio_to_ibm_audio(self, data_in, frame_count, time_info, status):
           try:
@@ -115,26 +131,21 @@ class Jarvis:
         pyaudio_stream.start_stream()
         stateful_callback = IBMRecognitionCallback()
         try:
-          recognize_thread = Thread(
-            target=self.__recognize_audio_callback, 
-            args=(audio_source, stateful_callback)
-          )
-          recognize_thread.start()
-          while(True):
-            pass
+          self.__recognize_audio_callback(audio_source, stateful_callback)
           print("ALL GOOD HERE")
-        except KeyboardInterrupt:
+        except:
           print("CAUGHT")
           # pyaudio_stream.stop_stream()
-          print("Sstream stopped")
+          print("Stream stopped")
           pyaudio_stream.close()
           print("Stream closed")
           pyaudio_audio.terminate()
           print("Audio terminated")
           audio_source.completed_recording()
         translated = stateful_callback.final_hypothesis
-        self.__text_to_speech(f"I think you said {translated}")
-        if ("news" in translated):
-            article = self.fetch_news()
-            self.__text_to_speech(article)
-
+        print(f"WATSON THINKS YOU SAID {translated}")
+        return translated
+        # self.__text_to_speech(f"I think you said {translated}")
+        # if ("news" in translated):
+        #     article = self.fetch_news()
+        #     self.__text_to_speech(article)

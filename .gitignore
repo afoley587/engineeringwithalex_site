@@ -538,3 +538,4 @@ lambda_env_*
 Brewfile.lock.json
 secret.sh
 *.avi
+*.mp3
