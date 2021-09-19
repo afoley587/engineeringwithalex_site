@@ -1,7 +1,7 @@
 # Welcome to my blog!
 
 ## Blog Posts
-
+### Python :material-language-python:
 <div class="grid-container">
   <div class="grid-blog-description">
     <h4>Take On Me With Python</h4>
@@ -17,3 +17,5 @@
     <img src="assets/img/take-on-me.gif" alt="" >
   </div>
 </div>
+
+### Bare Metal :material-server:
