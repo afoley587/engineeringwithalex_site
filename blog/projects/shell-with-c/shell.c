@@ -28,22 +28,17 @@ void parse_command(char *raw_buff[], char *command[], char *params[]) {
     token_num++;
     token = strtok(NULL, " ");
   }
-  printf("BEFORE COMAND\n");
+
   command[0] = strdup(arr[0]);
-  command[1] =  (char*)0;
-  printf("COMMAND[i] = %s\n", command[0]);
 
   for (i = 0; i < token_num; i++) {
     params[i] = strdup(arr[i]);
-    printf("PARAM[i] = %s\n", params[i-1]);
   }
 };
 
 int main() {
   char buffer[MAX_INPUT_BUFFER], *command[MAX_INPUT_BUFFER], *params[MAX_INPUT_BUFFER];
   char *envp[MAX_INPUT_BUFFER]  = { (char *) "PATH=/bin:/usr/bin:/usr/sbin", (char*)0};
-  char *cbuff[MAX_INPUT_BUFFER] = { "/bin/ls", (char*)0};
-  char *cpams[MAX_INPUT_BUFFER] = { "/bin/ls", "/Users/alex/Projects/SRE-487/jenkins-jobs", (char*)0};
 
   for (;;) {
     bzero(buffer, MAX_INPUT_BUFFER);
@@ -51,15 +46,9 @@ int main() {
     bzero(params, MAX_INPUT_BUFFER);
     read_input_to_buffer(&buffer);
     parse_command(&buffer, &command, &params);
-    printf("BACK\n");
-    printf("COMMAND: %s\n", command[0]);
-    for (int i = 0; i < 1; i++) {
-      printf("PARAM: %s\n", params[i]);
-    }
     if ( fork() != 0 ) {
       wait(NULL);
     } else {
-      printf("EXEC!\n");
       if (execve(command[0], params, envp) == -1) {
         perror("Could not execve!");
       }
