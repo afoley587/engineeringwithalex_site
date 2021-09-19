@@ -1,5 +1,8 @@
+package requestor;
+
 import java.net.*;
 import java.io.*;
+import org.json.JSONObject;
 
 public class MyRunnable implements Runnable {
     
@@ -20,11 +23,10 @@ public class MyRunnable implements Runnable {
                 nc.getInputStream()
               )
             );
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-              System.out.println(inputLine);
-            }
+            String inputLine = in.readLine();
+            JSONObject obj  = new JSONObject(inputLine);
             in.close();
+            System.out.println(obj.getString("value"));
         }
         catch (Exception e) {
             // Throwing an exception

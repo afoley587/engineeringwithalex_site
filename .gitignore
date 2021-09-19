@@ -539,3 +539,6 @@ Brewfile.lock.json
 secret.sh
 *.avi
 *.mp3
+*.class
+.gradle/
+gradle/
