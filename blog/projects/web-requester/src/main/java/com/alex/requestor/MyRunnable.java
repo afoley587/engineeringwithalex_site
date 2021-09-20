@@ -1,3 +1,4 @@
+// src/main/java/com/alex/requestor/MyRunnable.java
 package requestor;
 
 import java.net.*;
@@ -15,15 +16,20 @@ public class MyRunnable implements Runnable {
     public void run()
     {
         try {
-            // Displaying the thread that is running
+            // Create a URL object from the url string
             URL norris = new URL(this.url);
+            // Open the HTTP connection to the URL
             URLConnection nc = norris.openConnection();
+            // Read the response from the connection above
             BufferedReader in = new BufferedReader(
               new InputStreamReader(
                 nc.getInputStream()
               )
             );
+            // Get the raw JSON string response
             String inputLine = in.readLine();
+            // Create the JSON representation so we can access 
+            // it as if it is a map Object
             JSONObject obj  = new JSONObject(inputLine);
             in.close();
             System.out.println(obj.getString("value"));
