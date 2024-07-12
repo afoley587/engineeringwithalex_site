@@ -20,7 +20,7 @@ variable "index_document" {
 }
 
 variable "error_document" {
-  default = "error.html"
+  default = "index.html"
 }
 
 variable "source_ip_list" {
